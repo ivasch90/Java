@@ -7,7 +7,7 @@ public class Main {
         doTask2();
         doTask3();
         doTask4();
-        //doTask5(5, 20);
+        doTask5(5, 20);
         //doTask6();
         //doTask7(new int[]{1, 2, 3});
         //doTask8(new int[]{1, 2, 3}, 1);
