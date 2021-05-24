@@ -3,9 +3,9 @@ package HomeWorkApp;
 public class Main {
 
     public static void main(String[] args) {
-        //doTask1();
-        //doTask2();
-        //doTask3();
+        doTask1();
+        doTask2();
+        doTask3();
         doTask4();
         //doTask5(5, 20);
         //doTask6();
