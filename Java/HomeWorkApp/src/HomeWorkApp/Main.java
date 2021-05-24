@@ -3,11 +3,11 @@ package HomeWorkApp;
 public class Main {
 
     public static void main(String[] args) {
-        doTask1();
-        doTask2();
-        doTask3();
+        //doTask1();
+        //doTask2();
+        //doTask3();
         doTask4();
-        doTask5(5, 20);
+        //doTask5(5, 20);
         //doTask6();
         //doTask7(new int[]{1, 2, 3});
         //doTask8(new int[]{1, 2, 3}, 1);
@@ -41,13 +41,13 @@ public class Main {
     }
 
     static void doTask4() {
-        int arr[][] = new int[5][5];
+        int [][] arr = new int[5][5];
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                if (i == j) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i == j || i == 0 && j == arr.length - 1 || j == 0 && i == arr.length - 1)
                     arr[i][j] = 1;
-                }
-
+                else if (i == 1 && j == arr.length - 2 || j == 1 && i == arr.length - 2)
+                    arr[i][j] = 1;
                 System.out.print(arr[i][j] + "   ");
             }
             System.out.println();
