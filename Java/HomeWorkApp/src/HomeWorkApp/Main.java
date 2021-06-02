@@ -3,7 +3,7 @@ package HomeWorkApp;
 public class Main {
     public static void main(String[] args) {
 
-            Сотрудник[] persArray = new Сотрудник[5];
+            person [] persArray = new person[5];
             persArray[0] = new Сотрудник("Ivanov Ivan", "Engineer", "ivivan@mailbox.com", "892312312", 30000, 30);
             persArray[1] = new Сотрудник("Petrov Petr", "Director", "petrovpetr@mailbox.com", "892367291", 130000, 41);
             persArray[2] = new Сотрудник("Alekseev Aleksey", "IT Java", "alekseeval@mailbox.com", "89234527", 123000, 42);
