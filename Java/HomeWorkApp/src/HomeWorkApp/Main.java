@@ -11,3 +11,4 @@ public class Main {
         Pudel.swim(10);
     }
 }
+
