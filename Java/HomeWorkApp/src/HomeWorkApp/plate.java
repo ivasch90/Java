@@ -7,6 +7,10 @@ public class plate {
         this.food = food;
     }
 
+    public int getFood() {
+        return food;
+    }
+
     public void info() {
         System.out.println("Plate: " + food);
     }
