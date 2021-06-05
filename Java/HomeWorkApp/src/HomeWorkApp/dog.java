@@ -2,7 +2,6 @@ package HomeWorkApp;
 
 public class dog extends Animals {
 
-
     @Override
     public void run(int length) {
         if (length <= 500 && length >= 0) {

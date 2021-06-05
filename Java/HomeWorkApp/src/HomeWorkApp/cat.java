@@ -18,3 +18,4 @@ public class cat extends Animals {
         System.out.println("Cats do not like swim");
     }
 }
+
