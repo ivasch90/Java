@@ -3,6 +3,12 @@ package HomeWorkApp;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        cat cat = new cat("Barsik", 5);
+        plate plate = new plate(100);
+        plate.info();
+        cat.eat(plate);
+        plate.info();
+
+
     }
 }
