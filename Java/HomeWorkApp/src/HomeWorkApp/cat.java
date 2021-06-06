@@ -14,9 +14,9 @@ public class cat {
 
     public void eat(plate p) {
         p.decreaseFood(appetite);
-        if (appetite <= p.getFood() || p.isEatFood()) {
+        if (p.isEatFood())
             this.satiety = true;
-        }
+
         System.out.println("Cat eat...and satiety: " + satiety);
 
     }
