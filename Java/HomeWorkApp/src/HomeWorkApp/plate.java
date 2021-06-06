@@ -15,6 +15,10 @@ public class plate {
         System.out.println("Plate: " + food);
     }
     public void decreaseFood(int n) {
+        if (food >= 0 || food < 0)
         food -= n;
+        else {
+            System.out.println("Error");
+        }
     }
 }

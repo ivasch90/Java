@@ -20,5 +20,6 @@ public class cat {
         System.out.println("Cat eat...and satiety: " + satiety);
 
 
+
     }
 }
