@@ -9,11 +9,14 @@ public class Main {
         cat.eat(plate);
         plate.info();
         System.out.println("=============================");
-        catArrayMethod();
+        catArrayMethod(); //Task #5
+        plate.addPlate(); //Task #6
+        plate.info();
+
 
     }
 
-    public static void catArrayMethod() {
+    public static void catArrayMethod() {    //Task #5
         cat[] catArray = new cat[5];
         catArray[0] = new cat("kisa", 10);
         catArray[1] = new cat("murzik", 5);

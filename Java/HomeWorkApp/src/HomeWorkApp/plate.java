@@ -29,7 +29,7 @@ public class plate {
         return eatFood;
     }
 
-    public void addPlate() {
+    public void addPlate() { // Task #6
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please add food to plate [1...] ");
         food += scanner.nextInt();
