@@ -14,12 +14,11 @@ public class cat {
 
     public void eat(plate p) {
         p.decreaseFood(appetite);
-        if (appetite == p.getFood() || appetite < p.getFood()) {
-            satiety = true;
+        if (appetite <= p.getFood() || p.isEatFood()) {
+            this.satiety = true;
         }
         System.out.println("Cat eat...and satiety: " + satiety);
 
-
-
     }
+
 }
