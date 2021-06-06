@@ -3,13 +3,14 @@ package HomeWorkApp;
 public class Main {
 
     public static void main(String[] args) {
+        catArrayMethod(); //Task #5
+        System.out.println("=============================");
         cat cat = new cat("Barsik", 15);
         plate plate = new plate(14);
         plate.info();
         cat.eat(plate);
         plate.info();
         System.out.println("=============================");
-        catArrayMethod(); //Task #5
         plate.addPlate(); //Task #6
         plate.info();
 
