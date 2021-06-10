@@ -14,7 +14,11 @@ public class CalcButtonActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String[] operands = textField.getText().split("\\+");
-        int sum = Integer.parseInt(operands[0]) + Integer.parseInt(operands[1]);
+        int sum = 0;
+        for (int i = 0; i < operands.length; i++) {
+            sum += Integer.parseInt(operands[i]);
+            
+        }
         textField.setText(String.valueOf(sum));
 
     }
