@@ -12,13 +12,13 @@ public class cat {
         this.satiety = false;
     }
 
-    public void eat(plate p) {
+    public boolean eat(plate p) {
         p.decreaseFood(appetite);
         if (p.isEatFood())
             this.satiety = true; // Task #3
 
         System.out.println("Cat eat...and satiety: " + satiety);
-
+        return false;
     }
 
 }
