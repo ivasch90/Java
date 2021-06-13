@@ -59,8 +59,7 @@ public class CalcButtonActionListener implements ActionListener {
         }
         else if (square >= 0) {
             String operand = textField.getText().substring(6);
-            int tmp = Integer.parseInt(operand);
-            double sq = Math.sqrt(tmp);
+            double sq = Math.sqrt(Integer.parseInt(operand));
 
             textField.setText(String.valueOf(sq));
         }
