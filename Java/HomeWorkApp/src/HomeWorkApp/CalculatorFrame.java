@@ -22,7 +22,7 @@ public class CalculatorFrame extends JFrame {
 
     add(createTopPanel(), BorderLayout.NORTH);
     add(createBottomPanel(), BorderLayout.CENTER);
-
+    add(createEastPanel(), BorderLayout.EAST);
 
 
     setVisible(true);
@@ -55,9 +55,7 @@ public class CalculatorFrame extends JFrame {
         calc.addActionListener(new CalcButtonActionListener(inputArea));
         bottom.add(calc);
 
-        JButton plus = new JButton("+");
-        plus.addActionListener(e -> inputArea.setText(inputArea.getText() + "+"));
-        bottom.add(plus);
+
 
         return bottom;
     }
@@ -76,5 +74,33 @@ public class CalculatorFrame extends JFrame {
         return menuBar;
 
 
+    }
+    private JPanel createEastPanel() {
+        JPanel east = new JPanel();
+        east.setLayout(new GridLayout(5,1));
+
+        JButton division = new JButton("/");
+        division.addActionListener(e -> inputArea.setText(inputArea.getText() + "/"));
+
+        JButton plus = new JButton("+");
+        plus.addActionListener(e -> inputArea.setText(inputArea.getText() + "+"));
+
+        JButton multiplication = new JButton("*");
+        multiplication.addActionListener(e -> inputArea.setText(inputArea.getText() + "*"));
+
+        JButton square = new JButton("square");
+        square.addActionListener(e -> inputArea.setText(inputArea.getText() + "square"));
+
+        JButton minus = new JButton("-");
+        minus.addActionListener(e -> inputArea.setText(inputArea.getText() + "-"));
+
+
+        east.add(plus);
+        east.add(minus);
+        east.add(multiplication);
+        east.add(division);
+        east.add(square);
+
+        return east;
     }
 }
