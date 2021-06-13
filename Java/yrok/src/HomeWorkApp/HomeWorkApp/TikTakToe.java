@@ -71,7 +71,7 @@ public class TikTakToe {
             for (int j = 0; j < field.length; j++) {
                 checkHor &= (field[i][j] == sign);
                 checkVer &= (field[j][i] == sign);
-                checkDiag1 &= (field[j][j1] == sign);
+                checkDiag1 &= (field[j][j] == sign);
                 checkDiag2 &= (field[field.length - 1 - j][j] == sign);
 
             }
