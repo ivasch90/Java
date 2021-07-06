@@ -10,12 +10,12 @@ public class Human implements Entity{
     }
 
     @Override
-    public void run(Obstacles[] obstacles) {
+    public boolean run(int length) {
         System.out.println("Human is running...");
     }
 
     @Override
-    public void jump(Obstacles[] obstacles) {
+    public boolean jump(int height) {
         System.out.println("Human is jumping...");
     }
 

@@ -20,4 +20,13 @@ public class Cat implements Entity{
     }
 
 
+    @Override
+    public boolean run(int length) {
+        return false;
+    }
+
+    @Override
+    public boolean jump(int height) {
+        return false;
+    }
 }

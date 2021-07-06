@@ -9,14 +9,19 @@ public class Main {
                 new Robot("T1000",20),
         };
         Obstacles [] obstacles = {
-                new Wall(),
-                new Treadmill(),
+                new Wall(1),
+                new Treadmill(2),
         };
 
-        for (Entity entity : entities) {
-            entity.run(obstacles);
-            entity.jump(obstacles);
+        for (int i = 0; i < entities.length; i++) {
+            for (int j = 0; j < obstacles.length; j++) {
+            if (obstacles[j].passing(entities[i]) == false)
+                break;
+            }
+            System.out.println();
+
+        }
         }
     }
 
-}
+

@@ -3,7 +3,7 @@ package HomeWorkApp;
 public interface Entity {
 
 
-    void run(Obstacles[] obstacles);
-    void jump(Obstacles[] obstacles);
+    boolean run(int length);
+    boolean jump(int height);
 
 }
