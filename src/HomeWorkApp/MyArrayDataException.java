@@ -1,10 +1,14 @@
 package HomeWorkApp;
 
-public class MyArrayDataException extends NumberFormatException {
+public class MyArrayDataException extends RuntimeException {
     public MyArrayDataException() {
     }
 
-    public MyArrayDataException(String s) {
-        super(s);
+    public MyArrayDataException(String message) {
+        super(message);
+    }
+
+    public MyArrayDataException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

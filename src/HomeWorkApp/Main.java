@@ -1,9 +1,6 @@
 package HomeWorkApp;
 
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 public class Main {
     private static final byte NUMBER_TRUE = 4;
 
@@ -29,50 +26,56 @@ public class Main {
         array[3][2] = "super";
         array[3][3] = "slim";
 
-        String[][] qwerty = new String[5][5];
-        String[][] mount = new String[2][3];
+
+        String [][] qwerty = {
+                {"1", "8", "7","1", "9"},
+                {"4", "3", "7","1", "9"},
+                {"1", "3", "7","2", "9"},
+                {"2", "3", "5","1", "9"},
+                {"1", "6", "7","5", "3"}
+        };
+        String[][] mount = {
+                {"1","8","7","1"},
+                {"4","3","7","1"},
+                {"6","7","5","3"}
+    };
 
         try {
-            //arraySumException(mount);
-            //arraySumException(qwerty);
+            arraySumException(mount);
+            arraySumException(qwerty);
             arraySumException(array);
 
-        } catch (MyArraySizeException  | MyArrayDataException e) {
-            e.printStackTrace();
+        } catch (MyArraySizeException | MyArrayDataException e) {
 
         }
-
-
     }
 
-    public static void arraySumException(String[][] array) throws MyArrayDataException {
-
+     static int arraySumException(String[][] array) {
+        int sum = 0;
         if (array.length == NUMBER_TRUE) {
             for (int i = 0; i < array.length; i++) {
-                for (int j = 0; j < array[i].length; j++) {
-                    int sum = 0;
-                    try {
-                        sum =+ Integer.parseInt(array[i][j]);
+                for (int j = 0; j < array.length; j++) {
+                        try {
+                            sum += Integer.parseInt(array[i][j]);
 
-                    } catch (MyArrayDataException e) {
-                        e.printStackTrace();
-                    } catch (NumberFormatException e) {
-                        System.out.println("NumberFormatException in array " + "[" + i + "]" + "[" + j + "]");
-                    }
+                        } catch (NumberFormatException e) {
 
+                            throw new MyArrayDataException("NumberFormatException in array " + "[" + i + "]" + "[" + j + "]", e);
+                        }
                 }
             }
-        } else if (array.length > NUMBER_TRUE) {
-            try {
-                throw new MyArraySizeException();
-            } catch (MyArraySizeException e) {
-                System.out.println("Array size " + array.length + " > " + NUMBER_TRUE);
-            }
-        } else
-            try {
-                throw new MyArraySizeException();
-            } catch (MyArraySizeException e) {
-                System.out.println("Array size " + array.length + " < " + NUMBER_TRUE);
-            }
-    }
+            } else if (array.length > NUMBER_TRUE) {
+                try {
+                    throw new MyArraySizeException();
+                } catch (MyArraySizeException e) {
+                    System.out.println("Array size " + array.length + " > " + NUMBER_TRUE);
+                }
+            } else
+                try {
+                    throw new MyArraySizeException();
+                } catch (MyArraySizeException e) {
+                    System.out.println("Array size " + array.length + " < " + NUMBER_TRUE);
+                }
+            return sum;
+        }
 }
