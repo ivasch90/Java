@@ -1,4 +1,4 @@
-package HomeWorkApp;
+package HomeWorkApp.client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,6 +9,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Client {
     private Socket socket;
+    private DataOutputStream out;
+    private DataInputStream in;
+    Scanner scanner;
 
 
     public Client() {
@@ -26,9 +29,9 @@ public class Client {
 
     private void communicate() {
         try {
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            DataInputStream in = new DataInputStream(socket.getInputStream());
-            Scanner scanner = new Scanner(System.in);
+            out = new DataOutputStream(socket.getOutputStream());
+            in = new DataInputStream(socket.getInputStream());
+            scanner = new Scanner(System.in);
 
             AtomicBoolean isAlive = new AtomicBoolean(true);
 
@@ -38,6 +41,7 @@ public class Client {
                         String inBoundMessage = in.readUTF();
                         if (inBoundMessage.equals("-exit")) {
                             isAlive.set(false);
+                            System.out.println(inBoundMessage);
                             System.out.println("Please press ENTER!!! to closing client...");
                             break;
                         } else {
@@ -57,7 +61,7 @@ public class Client {
                     System.out.println("STATUS OK.");
                     break;
                 }
-                System.out.println("Please enter message...");
+                //System.out.println("Please enter message...");
                 String outBoundMessage = scanner.nextLine();
                 out.writeUTF(outBoundMessage);
             }
