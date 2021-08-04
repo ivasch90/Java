@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ClientHandler {
@@ -14,7 +15,9 @@ public class ClientHandler {
     private String name;
 
 
+
     public ClientHandler(Server server, Socket socket) {
+
         try {
             this.server = server;
             in = new DataInputStream(socket.getInputStream());
@@ -64,7 +67,6 @@ public class ClientHandler {
 
     private void doAuthentication() throws IOException {
 
-        System.out.println("PLEASE");
         while (true) {
             String maybeCredentials = in.readUTF();
             /** sample: -auth login1 password1 */
@@ -95,12 +97,39 @@ public class ClientHandler {
         }
     }
 
+    private boolean privateMessages (String msg) {
+        String[] maybePrivateMessagesArray = msg.split("\\s");
+        if (msg.startsWith("/w") && server.isUserOccupied(maybePrivateMessagesArray[1])) {
+
+            return true;
+        }
+        return false;
+
+    }
+
+    public String createUserArr(String message) {
+        String[] userPm = message.split("\\s");
+        return userPm[1];
+    }
+
+
     public void sendMessage(String outboundMessage) {
         try {
-            out.writeUTF(outboundMessage);
+            out.writeUTF(" -> " + outboundMessage);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void sendPrivateMess(String mess) {
+        if (createUserArr(mess).equals(getName()))
+        sendMessage(mess);
+    }
+
+    private boolean isPrivateMess(String msg, ClientHandler clientHandler) {
+        String[] arr = msg.split("\\s");
+        return msg.startsWith("/w") && server.isUserOccupied(arr[1]);
     }
 
     public void listenMessages() throws IOException {
@@ -113,4 +142,16 @@ public class ClientHandler {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientHandler that = (ClientHandler) o;
+        return Objects.equals(server, that.server) && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(server, name);
+    }
 }

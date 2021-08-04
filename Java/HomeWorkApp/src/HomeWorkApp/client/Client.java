@@ -11,17 +11,19 @@ public class Client {
     private Socket socket;
     private DataOutputStream out;
     private DataInputStream in;
-    Scanner scanner;
+    private Scanner scanner;
+
 
 
     public Client() {
+        System.out.println("Please Sign in:  " + "-auth login1 password1");
         start();
         communicate();
     }
     private void start() {
         try {
             Thread.sleep(3000);
-            socket = new Socket("localhost", 8888);
+            socket = new Socket("localhost", 8899);
         } catch (Exception e) {
             e.printStackTrace();
         }

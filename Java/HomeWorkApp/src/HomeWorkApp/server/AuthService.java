@@ -32,6 +32,8 @@ public class AuthService {
                 .findFirst();
     }
 
+
+
     static class Entry {
         String name;
         String login;

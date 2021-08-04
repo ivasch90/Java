@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Server {
 
@@ -18,7 +19,7 @@ public class Server {
         loggedUser = new ArrayList<>();
 
         try {
-            serverSocket = new ServerSocket(8888);
+            serverSocket = new ServerSocket(8899);
             while (true) {
                 Socket socket = serverSocket.accept();
 
@@ -85,5 +86,14 @@ public class Server {
 
         loggedUser.forEach(clientHandler -> clientHandler.sendMessage(outboundMessage));
     }
+
+    public void privateMess(String outboundMessages) {
+        String[] arr = outboundMessages.split("\\s");
+        loggedUser.stream()
+                .filter(u -> u.getName().equals(arr[1]))
+                        .findFirst();
+        broadcastMessage(outboundMessages);
+    }
+
 
 }
