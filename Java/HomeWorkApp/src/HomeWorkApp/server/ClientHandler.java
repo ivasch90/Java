@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ClientHandler {
 
@@ -13,9 +15,13 @@ public class ClientHandler {
     private DataOutputStream out;
     private String name;
     private final Socket socket;
-    private final byte SEC_TIMEOUT = 30;
+    private final int SEC_TIMEOUT = 120000;
+    TaskTimer Timeout = new TaskTimer();
+    Timer timer = new Timer();
+
 
     public ClientHandler(Server server, Socket socket) {
+
         this.socket = socket;
         try {
             this.server = server;
@@ -65,24 +71,20 @@ public class ClientHandler {
         return name;
     }
 
-    private void timeoutClose() {
-        long inTime = System.currentTimeMillis();
-        Thread t1 = new Thread (() -> {
-            while (true) {
-                if ((Math.floor(System.currentTimeMillis() - inTime)/1000) >= SEC_TIMEOUT) {
+    private class TaskTimer extends TimerTask {
+
+        @Override
+        public void run() {
                     sendMessage("Auth timeout. Connection close...");
                     closeConnection();
-                    break;
                 }
-            }
-        });
-                t1.start();
-    }
+        }
 
     private void doAuthentication() throws IOException {
         sendMessage("Greeting you in the Outstanding Chat.");
-        sendMessage("Please do authentication in " + SEC_TIMEOUT + "sec!!!");
+        sendMessage("Please do authentication in " + SEC_TIMEOUT/1000 + " sec!!!");
         sendMessage("Template is: -auth [login] [password]");
+        timer.schedule(Timeout, SEC_TIMEOUT);
 
         while (true) {
 
@@ -102,7 +104,8 @@ public class ClientHandler {
                         sendMessage("Welcome.");
                         server.broadcastMessage(String.format("User[%s] entered chat.", name));
                         server.subscribe(this);
-                        timeoutClose();
+                        timer.cancel();
+
                         return;
 
                     } else {
@@ -113,7 +116,9 @@ public class ClientHandler {
 
                     sendMessage("Invalid credentials.");
                 }
+
             } else {
+
                 sendMessage("Invalid auth operation");
             }
         }
