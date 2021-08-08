@@ -2,10 +2,8 @@ package HomeWorkApp;
 
 import HomeWorkApp.client.OutstandingChat;
 
-public class Main {
-
+public class ClientTwoStarter {
     public static void main(String[] args) {
         new OutstandingChat();
     }
-
 }
