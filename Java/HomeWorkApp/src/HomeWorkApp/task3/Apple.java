@@ -1,9 +1,10 @@
 package HomeWorkApp.task3;
 
-public class Apple <T extends Fruit> {
+public class Apple extends Fruit {
     private final float weight = 1.0f;
 
     public Apple() {
+        super(1.0f);
     }
 
 

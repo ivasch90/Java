@@ -17,35 +17,29 @@ public class Main {
         System.out.println(convertArrToList(createStringArray()));
         System.out.println(convertArrToList(createIntegerArray()));
 
-
-        //Box box1 = new Box(8);
-       // box1.addToBox(new Apple(), 8);
-        //Box box2 = new Box( 7);
-        //box2.addToBox(new Orange(), 7);
+        System.out.println("============================================");
 
         Apple apple = new Apple();
         Orange orange = new Orange();
-        List<Apple> appleList = new ArrayList<>();
-        appleList.add(apple);
-        Box box3 = new Box(5, appleList);
-        //List<Apple> appleList = new ArrayList<>();
-        //box3.addToBox;
-        box3.addToBox(apple);
-        box3.addToBox(apple);
-        box3.addToBox(apple);
-        //box3.addToBox(apple);
+        List<Orange> orangeList = new ArrayList<>();
+        orangeList.add(orange);
+        Box<Orange> orangeBox = new Box<>(4);
+        orangeBox.addToBox(orangeList);                             //add to Box List
+        System.out.println(orangeBox);
+        Box<Apple> appleBox = new Box<>(5);
+        appleBox.addToBox(apple);                                   // add to Box one
+        appleBox.addToBox(apple);
+        appleBox.addToBox(apple);
+        appleBox.addToBox(apple);
+        System.out.println(appleBox);
+        Box<Orange> orangeBoxOther = new Box<>(10);
+        orangeBoxOther.addToBox(orangeList);
+        System.out.println(orangeBoxOther);
+        System.out.println(orangeBox.compare(orangeBoxOther));          // compare Box (true / false)
+        orangeBoxOther.addToBox(orange);
+        orangeBox.merge(orangeBoxOther);                                //merge Box
+        System.out.println(orangeBoxOther);                             //Print new merge Box
 
-        box3.addToBox(box3);
-        box3.getWeight();
-        System.out.println(apple.getWeight());
-        //box3.addToBox(orange);
-        //box3.addToBox(orange);
-        //box3.addToBox(orange);
-
-
-        //System.out.println(box1);
-        //System.out.println(box2);
-        System.out.println(box3);
     }
 
 

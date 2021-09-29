@@ -4,44 +4,66 @@ package HomeWorkApp.task3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Box <T>{
+public class Box <T extends Fruit>{
 
     private final int capacity;
     private float weight = 0.0f;
-    private float fullness = 0.0f;
-    private List<T> arrayList;
+    private int fullness = 0;
+    private List<T> arrayList = new ArrayList<>();
 
 
-    public Box(int capacity, List<T> arrayList) {
+    public Box(int capacity) {
         this.capacity = capacity;
-        this.arrayList = arrayList;
-        fullness = arrayList.size();
     }
 
-    public Box addToBox (T fruit) {
+    public void addToBox (T fruit) {
         if (fullness < capacity) {
-            arrayList.add((int) fullness, fruit);
+            arrayList.add(fruit);
             fullness++;
         } else {
             System.out.println("Error!!! The Box " + fruit.getClass() + " capacity: " + capacity);
         }
-        return this;
+    }
+    public void addToBox (List<T> arrayList) {
+        if (fullness < capacity) {
+            this.arrayList.addAll(arrayList);
+            fullness += arrayList.size();
+        }
     }
 
     public float getWeight () {
-        this.weight = fullness;
-        return weight;
+        if (fullness > 0) {
+            return arrayList.get(0).getWeight() * fullness;
+        }
+        return 0.0f;
     }
 
-    public boolean compare (Box another) {
-        return false;
+    public boolean compare (Box<? extends Fruit> another) {
+        return Math.abs(getWeight() - another.getWeight()) == 0;            // if > 0.0001 result false
+    }
+
+    public void merge (Box<T> box) {
+
+        if (box.capacity > (box.fullness + fullness)) {
+            box.getArrayList().addAll(arrayList);
+            box.fullness += arrayList.size();
+            arrayList.clear();
+            System.out.println("Great! You are merge Fruits ");
+        }
+        else {
+            System.out.println("Error! few capacity " + capacity);
+        }
+    }
+
+    public List<T> getArrayList() {
+        return arrayList;
     }
 
     @Override
     public String toString() {
         return "Box{" +
                 "capacity=" + capacity +
-                ", weight=" + weight +
+                ", weight=" + getWeight() +
                 ", fullness=" + fullness +
                 '}';
     }

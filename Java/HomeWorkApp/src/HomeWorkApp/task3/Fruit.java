@@ -1,7 +1,11 @@
 package HomeWorkApp.task3;
 
-public class Fruit <T> {
+public abstract class Fruit {
     private float weight;
+
+    public Fruit(float weight) {
+        this.weight = weight;
+    }
 
     public float getWeight() {
         return weight;
