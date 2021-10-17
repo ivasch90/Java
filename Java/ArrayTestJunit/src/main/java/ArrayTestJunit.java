@@ -5,12 +5,13 @@ public class ArrayTestJunit {
 
 
     public static int[] arrayLastElementsFour(int[] arr) {
-            int[] arrayFour = new int[0];
+            int[] arrayFour = new int[arr.length];
             if (arr.length > 0) {
                 int[] arrSorted = new int[arr.length];
                 System.arraycopy(arr, 0, arrSorted, 0, arr.length);
+                Arrays.sort(arrSorted);
                 int y = Arrays.binarySearch(arrSorted, 4);
-                if (y != 0) {
+                if (y >= -1) {
                     for (int i = arr.length - 1; i >= 0; i--) {
                         if (arr[i] == 4) {
                             int newArrayLength = arr.length - 1 - i;

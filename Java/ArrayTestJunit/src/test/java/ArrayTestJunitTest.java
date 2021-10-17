@@ -33,9 +33,8 @@ public class ArrayTestJunitTest {
 
     @ParameterizedTest
     @MethodSource("valuesForIntArrayWhenNotElementFourProvider")
-    void shouldThrowRuntimeExceptionWhenIntArrayNotElementFour() {
-        int[] array1Result = {1, 7};
-        assertThrows(RuntimeException.class, () -> ArrayTestJunit.arrayLastElementsFour(array1Result));
+    void shouldThrowRuntimeExceptionWhenIntArrayNotElementFour(int [] array) {
+        assertThrows(RuntimeException.class, () -> ArrayTestJunit.arrayLastElementsFour(array));
     }
 
     private static Stream<Arguments> valuesForIntArrayWhenNotElementFourProvider() {
@@ -43,11 +42,9 @@ public class ArrayTestJunitTest {
         int[] array2 = {0, 5, 23, 867, 42, 12, 6564};
         int[] array3 = {531, 423, 53, 654, 1, 654};
         return Stream.of(
-                Arguments.of(array1, RuntimeException.class),
-                Arguments.of(array2, RuntimeException.class),
-                Arguments.of(array3, RuntimeException.class),
-                Arguments.of(array1, NullPointerException.class),
-                Arguments.of(RuntimeException.class, array1)
+                Arguments.of(array1), //IntelliJ IDEA backlight array1 because one argument?
+                Arguments.of(array2),
+                Arguments.of(array3)
         );
     }
 
